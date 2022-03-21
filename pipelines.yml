@@ -3,7 +3,7 @@ resources:
     type: GitRepo
     configuration:
       gitProvider: webappgit                       # <-- replace with your integration
-      path: liav-local-repo    # <-- replace with your repository name
+      path: jfrog-pipelines-docker-sample    # <-- replace with your repository name
       branches:
         include: master
 
