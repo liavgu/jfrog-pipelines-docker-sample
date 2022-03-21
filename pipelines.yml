@@ -7,7 +7,7 @@ resources:
       branches:
         include: master
 
-  - name: dbp_image
+  - name: webinfra
     type: Image
     configuration:
       registry: liav-local-repo                                # <-- replace with your     MyArtifactoryifactory integration
@@ -53,11 +53,11 @@ pipelines:
           affinityGroup: dbp_group
           targetRepository: docker-local
           integrations:
-            - name:      MyArtifactory                            # <-- replace with your     MyArtifactoryifactory integration
+            - name: MyArtifactory                            # <-- replace with your     MyArtifactoryifactory integration
           inputSteps:
             - name: docker_build
           outputResources:
-            - name: dbp_image
+            - name: webinfra
 
       - name: publish_dbp_build
         type: PublishBuildInfo
