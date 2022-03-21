@@ -1,6 +1,7 @@
 #!/bin/bash -e
 
 echo "================= Adding some global settings ==================="
+echo "BlaBla"
 mkdir -p "$HOME/.ssh/"
 mv /config "$HOME/.ssh/"
 mv /90forceyes /etc/apt/apt.conf.d/
