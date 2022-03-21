@@ -10,8 +10,8 @@ resources:
   - name: dbp_image
     type: Image
     configuration:
-      registry: liav-local-repo                                # <-- replace with your artifactory integration
-      sourceRepository: liav-local-repo               # <-- required if registry is Artifactory
+      registry: liav-local-repo                                # <-- replace with your     MyArtifactoryifactory integration
+      sourceRepository: liav-local-repo               # <-- required if registry is     MyArtifactoryifactory
       imageName: liavacademy.jfrogdev.org/artifactory/liav-local-repo/ # < -- replace with your image path and name
       imageTag: latest
       autoPull: true
@@ -19,14 +19,14 @@ resources:
   - name: dbp_build_info
     type: BuildInfo
     configuration:
-      sourceArtifactory: art
+      sourceArtifactory: MyArtifactory
       buildName: dbp_build
       buildNumber: 1    
 
   - name: dbp_promoted_build_info
     type: BuildInfo
     configuration:
-      sourceArtifactory: art
+      sourceArtifactory: MyArtifactory
       buildName: dbp_build
       buildNumber: 1
       
@@ -45,7 +45,7 @@ pipelines:
           inputResources:
             - name: dbp_repo
           integrations:
-            - name: art                            # <-- replace with your artifactory integration
+            - name: MyArtifactory                            # <-- replace with your     MyArtifactoryifactory integration
 
       - name: docker_push
         type: DockerPush
@@ -53,7 +53,7 @@ pipelines:
           affinityGroup: dbp_group
           targetRepository: docker-local
           integrations:
-            - name: art                            # <-- replace with your artifactory integration
+            - name:      MyArtifactory                            # <-- replace with your     MyArtifactoryifactory integration
           inputSteps:
             - name: docker_build
           outputResources:
@@ -72,7 +72,7 @@ pipelines:
         configuration:
           targetRepository: demo-pipelines
           integrations:
-            - name: art
+            - name: MyArtifactory
           inputResources:
             - name: dbp_build_info
           outputResources:
