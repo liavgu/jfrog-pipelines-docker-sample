@@ -67,7 +67,7 @@ pipelines:
           inputSteps:
             - name: docker_build
           outputResources:
-            - name: prod-repo
+            - name: webinfra_prod
 
       - name: publish_dbp_build
         type: PublishBuildInfo
