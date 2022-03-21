@@ -10,7 +10,7 @@ resources:
   - name: webinfra_test
     type: Image
     configuration:
-      registry: liav-local-repo                                # <-- replace with your     MyArtifactoryifactory integration
+      registry: MyArtifactory                                # <-- replace with your     MyArtifactoryifactory integration
       sourceRepository: liav-local-repo               # <-- required if registry is     MyArtifactoryifactory
       imageName: liavacademy.jfrogdev.org/artifactory/liav-local-repo/webinfra # < -- replace with your image path and name
       imageTag: latest
