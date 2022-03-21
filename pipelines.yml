@@ -15,6 +15,16 @@ resources:
       imageName: liavacademy.jfrogdev.org/artifactory/liav-local-repo/webinfra # < -- replace with your image path and name
       imageTag: latest
       autoPull: true
+
+
+  - name: webinfra_prod
+    type: Image
+    configuration:
+      registry: MyArtifactory                                # <-- replace with your     MyArtifactoryifactory integration
+      sourceRepository: prod-repo               # <-- required if registry is     MyArtifactoryifactory
+      imageName: liavacademy.jfrogdev.org/artifactory/prod-repo/webinfra # < -- replace with your image path and name
+      imageTag: latest
+      autoPull: true
       
   - name: dbp_build_info
     type: BuildInfo
@@ -57,7 +67,7 @@ pipelines:
           inputSteps:
             - name: docker_build
           outputResources:
-            - name: webinfra_test
+            - name: prod-repo
 
       - name: publish_dbp_build
         type: PublishBuildInfo
