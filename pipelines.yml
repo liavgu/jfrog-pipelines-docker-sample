@@ -37,7 +37,7 @@ pipelines:
         type: DockerPush
         configuration:
           affinityGroup: dbp_group
-          targetRepository: docker-local
+          targetRepository: liav-local-repo
           integrations:
             - name: MyArtifactory                            # <-- new test replace with your     MyArtifactoryifactory integration
           inputSteps:
