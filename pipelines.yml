@@ -57,12 +57,12 @@ pipelines:
       - name: publish_app_build
         type: PublishBuildInfo
         configuration:
-          affinityGroup: docker_group
+          affinityGroup: dbp_group
           inputSteps:
-            - name: app_push
+            - name: docker_push
           outputResources:
             - name: app_buildinfo
-            
+
       - name: xrayScanStep
         type: XrayScan
         configuration:
