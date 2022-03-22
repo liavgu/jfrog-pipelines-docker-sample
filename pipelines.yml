@@ -26,7 +26,7 @@ pipelines:
           affinityGroup: dbp_group
           dockerFileLocation: .
           dockerFileName: Dockerfile
-          dockerImageName: liavacademy.jfrogdev.org/artifactory/liav-local-repo/webinfra  # replace with your image path and name
+          dockerImageName: liavacademy.jfrogdev.org/prod-repo/webinfra  # replace with your image path and name
           dockerImageTag: ${run_number}
           inputResources:
             - name: dbp_repo
