@@ -13,7 +13,7 @@ resources:
       registry: MyArtifactory                                # <-- replace with your     MyArtifactoryifactory integration
       sourceRepository: prod-repo               # <-- required if registry is     MyArtifactoryifactory
       imageName: liavacademy.jfrogdev.org/artifactory/prod-repo/webinfra # < -- replace with your image path and name
-      imageTag: latest
+      imageTag: ${run_number}
       autoPull: true
       
 
