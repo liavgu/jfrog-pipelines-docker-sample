@@ -15,7 +15,16 @@ resources:
       imageName: liavacademy.jfrogdev.org/prod-repo/webinfra # < -- replace with your image path and name
       imageTag: ${run_number}
       autoPull: true
-      
+
+  - name: app_buildinfo
+    type: BuildInfo
+    configuration:
+      sourceArtifactory: MyArtifactory
+
+  - name: app_promoted_buildinfo
+    type: BuildInfo
+    configuration:
+      sourceArtifactory: MyArtifactory 
 
 pipelines:
   - name: pipeline_build_and_push_liav
@@ -44,3 +53,18 @@ pipelines:
             - name: docker_build
           outputResources:
             - name: new_image_name
+
+      - name: publish_app_build
+        type: PublishBuildInfo
+        configuration:
+          affinityGroup: docker_group
+          inputSteps:
+            - name: app_push
+          outputResources:
+            - name: app_buildinfo
+            
+      - name: xrayScanStep
+        type: XrayScan
+        configuration:
+          inputResources:
+            - name: app_buildinfo
