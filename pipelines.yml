@@ -7,7 +7,7 @@ resources:
       branches:
         include: master
 
-  - name: webinfra_prod
+  - name: new_image_name
     type: Image
     configuration:
       registry: MyArtifactory                                # <-- replace with your     MyArtifactoryifactory integration
@@ -18,7 +18,7 @@ resources:
       
 
 pipelines:
-  - name: pipeline_build_and_push_new
+  - name: pipeline_build_and_push_liav
     steps:
       - name: docker_build
         type: DockerBuild
@@ -43,4 +43,4 @@ pipelines:
           inputSteps:
             - name: docker_build
           outputResources:
-            - name: webinfra_prod
+            - name: new_image_name
