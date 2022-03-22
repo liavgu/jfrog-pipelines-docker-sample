@@ -7,6 +7,16 @@ resources:
       branches:
         include: master
 
+  - name: webinfra_test
+    type: Image
+    configuration:
+      registry: MyArtifactory                                # <-- replace with your     MyArtifactoryifactory integration
+      sourceRepository: liav-local-repo               # <-- required if registry is     MyArtifactoryifactory
+      imageName: liavacademy.jfrogdev.org/artifactory/liav-local-repo/webinfra # < -- replace with your image path and name
+      imageTag: latest
+      autoPull: true
+
+
   - name: webinfra_prod
     type: Image
     configuration:
@@ -15,6 +25,20 @@ resources:
       imageName: liavacademy.jfrogdev.org/artifactory/prod-repo/webinfra # < -- replace with your image path and name
       imageTag: latest
       autoPull: true
+      
+  - name: dbp_build_info
+    type: BuildInfo
+    configuration:
+      sourceArtifactory: MyArtifactory
+      buildName: dbp_build
+      buildNumber: 1    
+
+  - name: dbp_promoted_build_info
+    type: BuildInfo
+    configuration:
+      sourceArtifactory: MyArtifactory
+      buildName: dbp_build
+      buildNumber: 1
       
 
 pipelines:
@@ -44,3 +68,23 @@ pipelines:
             - name: docker_build
           outputResources:
             - name: webinfra_prod
+
+      - name: publish_dbp_build
+        type: PublishBuildInfo
+        configuration:
+          inputSteps:
+            - name: docker_push
+          outputResources:
+            - name: dbp_build_info
+
+      - name: promote_dbp_build
+        type: PromoteBuild
+        configuration:
+          targetRepository: demo-pipelines
+          integrations:
+            - name: MyArtifactory
+          inputResources:
+            - name: dbp_build_info
+          outputResources:
+            - name: dbp_promoted_build_info
+
