@@ -2,7 +2,7 @@ resources:
   - name: dbp_repo
     type: GitRepo
     configuration:
-      gitProvider: webappgit                       # <-- replace with your 
+      gitProvider: webappgit                       # <-- replace wth your 
       path: liavgu/Multi_threaded_online_brute_force_template    # <-- replace with your repository name
       branches:
         include: master
@@ -27,7 +27,7 @@ resources:
       sourceArtifactory: MyArtifactory 
 
 pipelines:
-  - name: pipeline_build_and_push_new_pipe
+  - name: pipeline_build_and_push_liav
     steps:
       - name: docker_build
         type: DockerBuild
@@ -66,6 +66,5 @@ pipelines:
       - name: xrayScanStep
         type: XrayScan
         configuration:
-          affinityGroup: dbp_group
           inputResources:
             - name: app_buildinfo
