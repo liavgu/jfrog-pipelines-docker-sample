@@ -27,7 +27,7 @@ resources:
       sourceArtifactory: MyArtifactory 
 
 pipelines:
-  - name: pipeline_build_and_push_liav
+  - name: pipeline_build_and_push_liav_shimon
     steps:
       - name: docker_build
         type: DockerBuild
