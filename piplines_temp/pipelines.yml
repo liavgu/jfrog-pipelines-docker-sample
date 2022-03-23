@@ -3,7 +3,7 @@ resources:
     type: GitRepo
     configuration:
       gitProvider: webappgit                       # <-- replace with your 
-      path: liavgu/Multi_threaded_online_brute_force_template    # <-- replace with your repository name
+      path: liavgu/jfrog-pipelines-docker-sample    # <-- replace with your repository name
       branches:
         include: master
 
