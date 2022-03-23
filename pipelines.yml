@@ -1,5 +1,5 @@
 resources:
-  - name: dbp_repo
+  - name: Git_int
     type: GitRepo
     configuration:
       gitProvider: webappgit                       # <-- replace wth your 
@@ -7,7 +7,7 @@ resources:
       branches:
         include: master
 
-  - name: new_image_name
+  - name: new_docker_image
     type: Image
     configuration:
       registry: MyArtifactory                                # <-- replace with your     MyArtifactoryifactory integration
@@ -16,12 +16,12 @@ resources:
       imageTag: ${run_number}
       autoPull: true
 
-  - name: app_buildinfo
+  - name: py_app_buildinfo
     type: BuildInfo
     configuration:
       sourceArtifactory: MyArtifactory
 
-  - name: app_promoted_buildinfo
+  - name: py_app_promoted_buildinfo
     type: BuildInfo
     configuration:
       sourceArtifactory: MyArtifactory 
@@ -38,7 +38,7 @@ pipelines:
           dockerImageName: liavacademy.jfrogdev.org/prod-repo/webinfra  # replace with your image path and name
           dockerImageTag: ${run_number}
           inputResources:
-            - name: dbp_repo
+            - name: Git_int
           integrations:
             - name: MyArtifactory                            # <-- replace with your     MyArtifactoryifactory integration
 
@@ -52,7 +52,7 @@ pipelines:
           inputSteps:
             - name: docker_build
           outputResources:
-            - name: new_image_name
+            - name: new_docker_image
 
       - name: publish_app_build
         type: PublishBuildInfo
@@ -61,10 +61,10 @@ pipelines:
           inputSteps:
             - name: docker_push
           outputResources:
-            - name: app_buildinfo
+            - name: py_app_buildinfo
 
       - name: xrayScanStep
         type: XrayScan
         configuration:
           inputResources:
-            - name: app_buildinfo
+            - name: py_app_buildinfo
