@@ -66,5 +66,6 @@ pipelines:
       - name: xrayScanStep
         type: XrayScan
         configuration:
+          affinityGroup: dbp_group
           inputResources:
             - name: app_buildinfo
