@@ -14,7 +14,7 @@ resources:
     configuration:
       registry: MyArtifactory                                
       sourceRepository: prod-repo               
-      imageName: liavgoldadev.jfrogdev.org/prod-repo/webinfra
+      imageName: liavgoldadev.jfrogdev.org/prod-repo/golda
       imageTag: ${run_number}
       autoPull: true
 
@@ -37,7 +37,7 @@ pipelines:
           affinityGroup: build_push
           dockerFileLocation: .
           dockerFileName: Dockerfile
-          dockerImageName: liavgoldadev.jfrogdev.org/prod-repo/webinfra  
+          dockerImageName: liavgoldadev.jfrogdev.org/prod-repo/golda 
           dockerImageTag: ${run_number}
           inputResources:
             - name: Git_Golda
