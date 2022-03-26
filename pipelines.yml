@@ -7,7 +7,7 @@ resources:
       branches:
         include: master
 
-  - name: new_docker_image
+  - name: new_docker_image_
     type: Image
     configuration:
       registry: MyArtifactory                                # <-- replace with your     MyArtifactoryifactory integration
@@ -16,12 +16,12 @@ resources:
       imageTag: ${run_number}
       autoPull: true
 
-  - name: py_app_buildinfo
+  - name: py_app_buildinfo_
     type: BuildInfo
     configuration:
       sourceArtifactory: MyArtifactory
 
-  - name: py_app_promoted_buildinfo
+  - name: py_app_promoted_buildinfo_
     type: BuildInfo
     configuration:
       sourceArtifactory: MyArtifactory 
@@ -32,7 +32,7 @@ pipelines:
       - name: docker_build_
         type: DockerBuild
         configuration:
-          affinityGroup: dbp_group
+          affinityGroup: build_push
           dockerFileLocation: .
           dockerFileName: Dockerfile
           dockerImageName: liavacademy.jfrogdev.org/prod-repo/webinfra  # replace with your image path and name
@@ -42,29 +42,28 @@ pipelines:
           integrations:
             - name: MyArtifactory                            # <-- replace with your     MyArtifactoryifactory integration
 
-      - name: docker_push
+      - name: docker_push_
         type: DockerPush
         configuration:
-          affinityGroup: dbp_group
+          affinityGroup: build_push
           targetRepository: liav-local-repo
           integrations:
             - name: MyArtifactory                            # <-- new test replace with your     MyArtifactoryifactory integration
           inputSteps:
             - name: docker_build_
           outputResources:
-            - name: new_docker_image
+            - name: new_docker_image_
 
       - name: publish_app_build
         type: PublishBuildInfo
         configuration:
-          affinityGroup: dbp_group
           inputSteps:
-            - name: docker_push
+            - name: docker_push_
           outputResources:
-            - name: py_app_buildinfo
+            - name: py_app_buildinfo_
 
       - name: xrayScanStep
         type: XrayScan
         configuration:
           inputResources:
-            - name: py_app_buildinfo
+            - name: py_app_buildinfo_
