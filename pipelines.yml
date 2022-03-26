@@ -12,7 +12,7 @@ resources:
   - name: new_docker_image_
     type: Image
     configuration:
-      registry: MyArtifactory                                # <-- replace with your     MyArtifactoryifactory integration
+      registry: MyArtifactory                                
       sourceRepository: prod-repo               # <-- required if registry is     MyArtifactoryifactory
       imageName: liavgoldadev.jfrogdev.org/prod-repo/webinfra # < -- replace with your image path and name
       imageTag: ${run_number}
@@ -68,4 +68,8 @@ pipelines:
         type: XrayScan
         configuration:
           inputResources:
+<<<<<<< HEAD
             - name: py_app_buildinfo_
+=======
+            - name: py_app_buildinfo
+>>>>>>> f09b6590623b010034436d04715a621420ad9f32
