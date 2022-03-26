@@ -29,7 +29,7 @@ resources:
       sourceArtifactory: MyArtifactory 
 
 pipelines:
-  - name: golda_pipeline
+  - name: golda_pipeline_v2
     steps:
       - name: docker_build
         type: DockerBuild
