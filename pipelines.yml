@@ -23,11 +23,6 @@ resources:
     configuration:
       sourceArtifactory: MyArtifactory
 
-  - name: py_app_promoted_buildinfo
-    type: BuildInfo
-    configuration:
-      sourceArtifactory: MyArtifactory 
-
 pipelines:
   - name: golda_pipeline_v2
     steps:
