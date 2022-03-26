@@ -10,7 +10,7 @@ resources:
   - name: new_docker_image
     type: Image
     configuration:
-      registry: MyArtifactory                                # <-- replace with your     MyArtifactoryifactory integration
+      registry: MyArtifactory                                
       sourceRepository: prod-repo               # <-- required if registry is     MyArtifactoryifactory
       imageName: liavacademy.jfrogdev.org/prod-repo/webinfra # < -- replace with your image path and name
       imageTag: ${run_number}
