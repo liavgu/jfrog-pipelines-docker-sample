@@ -2,8 +2,8 @@ resources:
   - name: Git_Golda
     type: GitRepo
     configuration:
-      gitProvider: GoldaGit                       # <-- replace wth your 
-      path: liavgu/Multi_threaded_online_brute_force_template    # <-- replace with your repository name
+      gitProvider: GoldaGit                      
+      path: liavgu/Multi_threaded_online_brute_force_template    
       branches:
         include: master
       buildOn:
@@ -13,8 +13,8 @@ resources:
     type: Image
     configuration:
       registry: MyArtifactory                                
-      sourceRepository: prod-repo               # <-- required if registry is     MyArtifactoryifactory
-      imageName: liavgoldadev.jfrogdev.org/prod-repo/webinfra # < -- replace with your image path and name
+      sourceRepository: prod-repo               
+      imageName: liavgoldadev.jfrogdev.org/prod-repo/webinfra 
       imageTag: ${run_number}
       autoPull: true
 
@@ -37,12 +37,12 @@ pipelines:
           affinityGroup: build_push
           dockerFileLocation: .
           dockerFileName: Dockerfile
-          dockerImageName: liavacademy.jfrogdev.org/prod-repo/webinfra  # replace with your image path and name
+          dockerImageName: liavgoldadev.jfrogdev.org/prod-repo/webinfra  
           dockerImageTag: ${run_number}
           inputResources:
             - name: Git_Golda
           integrations:
-            - name: MyArtifactory                            # <-- replace with your     MyArtifactoryifactory integration
+            - name: MyArtifactory                           
 
       - name: docker_push
         type: DockerPush
@@ -50,7 +50,7 @@ pipelines:
           affinityGroup: build_push
           targetRepository: liav-local-repo
           integrations:
-            - name: MyArtifactory                            # <-- new test replace with your     MyArtifactoryifactory integration
+            - name: MyArtifactory                            
           inputSteps:
             - name: docker_build
           outputResources:
