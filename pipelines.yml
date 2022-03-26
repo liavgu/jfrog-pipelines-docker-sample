@@ -2,7 +2,7 @@ resources:
   - name: Git_int
     type: GitRepo
     configuration:
-      gitProvider: webappgit                       # <-- replace wth your 
+      gitProvider: GoldaGit                       # <-- replace wth your 
       path: liavgu/Multi_threaded_online_brute_force_template    # <-- replace with your repository name
       branches:
         include: master
@@ -27,7 +27,7 @@ resources:
       sourceArtifactory: MyArtifactory 
 
 pipelines:
-  - name: pipeline_build_and_push_liav_shimon
+  - name: golda_pipeline
     steps:
       - name: docker_build
         type: DockerBuild
