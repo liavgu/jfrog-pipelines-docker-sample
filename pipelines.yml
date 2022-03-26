@@ -68,8 +68,4 @@ pipelines:
         type: XrayScan
         configuration:
           inputResources:
-<<<<<<< HEAD
-            - name: py_app_buildinfo_
-=======
-            - name: py_app_buildinfo
->>>>>>> f09b6590623b010034436d04715a621420ad9f32
+           -name: py_app_buildinfo
