@@ -29,7 +29,7 @@ resources:
 pipelines:
   - name: golda_pipeline
     steps:
-      - name: docker_build
+      - name: docker_build_
         type: DockerBuild
         configuration:
           affinityGroup: dbp_group
@@ -50,7 +50,7 @@ pipelines:
           integrations:
             - name: MyArtifactory                            # <-- new test replace with your     MyArtifactoryifactory integration
           inputSteps:
-            - name: docker_build
+            - name: docker_build_
           outputResources:
             - name: new_docker_image
 
