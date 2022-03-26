@@ -44,7 +44,7 @@ pipelines:
           integrations:
             - name: MyArtifactory                            # <-- replace with your     MyArtifactoryifactory integration
 
-      - name: docker_push_
+      - name: docker_push
         type: DockerPush
         configuration:
           affinityGroup: build_push
