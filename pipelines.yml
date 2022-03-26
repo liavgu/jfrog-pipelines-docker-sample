@@ -9,7 +9,7 @@ resources:
       buildOn:
         commit: ture
 
-  - name: new_docker_image_
+  - name: new_docker_image
     type: Image
     configuration:
       registry: MyArtifactory                                
@@ -18,12 +18,12 @@ resources:
       imageTag: ${run_number}
       autoPull: true
 
-  - name: py_app_buildinfo_
+  - name: py_app_buildinfo
     type: BuildInfo
     configuration:
       sourceArtifactory: MyArtifactory
 
-  - name: py_app_promoted_buildinfo_
+  - name: py_app_promoted_buildinfo
     type: BuildInfo
     configuration:
       sourceArtifactory: MyArtifactory 
@@ -31,7 +31,7 @@ resources:
 pipelines:
   - name: golda_pipeline
     steps:
-      - name: docker_build_
+      - name: docker_build
         type: DockerBuild
         configuration:
           affinityGroup: build_push
@@ -52,17 +52,17 @@ pipelines:
           integrations:
             - name: MyArtifactory                            # <-- new test replace with your     MyArtifactoryifactory integration
           inputSteps:
-            - name: docker_build_
+            - name: docker_build
           outputResources:
-            - name: new_docker_image_
+            - name: new_docker_image
 
-      - name: publish_app_build_
+      - name: publish_app_build
         type: PublishBuildInfo
         configuration:
           inputSteps:
-            - name: docker_push_
+            - name: docker_push
           outputResources:
-            - name: py_app_buildinfo_
+            - name: py_app_buildinfo
 
       - name: xrayScanStep
         type: XrayScan
