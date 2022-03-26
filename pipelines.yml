@@ -1,5 +1,5 @@
 resources:
-  - name: Git_int
+  - name: Git_Golda
     type: GitRepo
     configuration:
       gitProvider: GoldaGit                       # <-- replace wth your 
@@ -38,7 +38,7 @@ pipelines:
           dockerImageName: liavacademy.jfrogdev.org/prod-repo/webinfra  # replace with your image path and name
           dockerImageTag: ${run_number}
           inputResources:
-            - name: Git_int
+            - name: Git_Golda
           integrations:
             - name: MyArtifactory                            # <-- replace with your     MyArtifactoryifactory integration
 
