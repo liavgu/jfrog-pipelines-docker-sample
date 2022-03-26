@@ -54,7 +54,7 @@ pipelines:
           outputResources:
             - name: new_docker_image_
 
-      - name: publish_app_build
+      - name: publish_app_build_
         type: PublishBuildInfo
         configuration:
           inputSteps:
