@@ -48,7 +48,7 @@ pipelines:
         type: DockerPush
         configuration:
           affinityGroup: build_push
-          targetRepository: liav-local-repo
+          targetRepository: prod-repo
           integrations:
             - name: MyArtifactory                            
           inputSteps:
