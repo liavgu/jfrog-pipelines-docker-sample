@@ -9,7 +9,7 @@ resources:
       buildOn:
         commit: true
 
-  - name: new_docker_image
+  - name: golda_new_docker_image
     type: Image
     configuration:
       registry: MyArtifactory                                
@@ -54,7 +54,7 @@ pipelines:
           inputSteps:
             - name: docker_build
           outputResources:
-            - name: new_docker_image
+            - name: golda_new_docker_image
 
       - name: publish_app_build
         type: PublishBuildInfo
