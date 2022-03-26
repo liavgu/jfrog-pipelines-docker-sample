@@ -14,7 +14,7 @@ resources:
     configuration:
       registry: MyArtifactory                                
       sourceRepository: prod-repo               
-      imageName: liavgoldadev.jfrogdev.org/prod-repo/webinfra 
+      imageName: liavgoldadev.jfrogdev.org/prod-repo/webinfra
       imageTag: ${run_number}
       autoPull: true
 
