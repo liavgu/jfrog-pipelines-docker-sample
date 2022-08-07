@@ -9,7 +9,7 @@ resources:
       buildOn:
         commit: true
 #
-  - name: golda_new_docker_image
+  - name: PasswordHunter_docker_image
     type: Image
     configuration:
       registry: MyArtifactory                                
@@ -32,7 +32,7 @@ pipelines:
           affinityGroup: build_push
           dockerFileLocation: .
           dockerFileName: Dockerfile
-          dockerImageName: liavgoldadev.jfrogdev.org/prod-repo/golda 
+          dockerImageName: liavgoldadev.jfrogdev.org/base-images/base_image
           dockerImageTag: ${run_number}
           inputResources:
             - name: Git_Golda
@@ -49,7 +49,7 @@ pipelines:
           inputSteps:
             - name: docker_build
           outputResources:
-            - name: golda_new_docker_image
+            - name: PasswordHunter_docker_image
 
       - name: publish_app_build
         type: PublishBuildInfo
