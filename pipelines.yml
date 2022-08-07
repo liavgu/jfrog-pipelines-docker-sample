@@ -2,7 +2,7 @@ resources:
   - name: Git_Golda
     type: GitRepo
     configuration:
-      gitProvider: GoldaGit                      
+      gitProvider: PasswordHunterGit                      
       path: liavgu/Multi_threaded_online_brute_force_template    
       branches:
         include: master
