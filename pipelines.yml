@@ -13,8 +13,8 @@ resources:
     type: Image
     configuration:
       registry: MyArtifactory                                
-      sourceRepository: prod-repo               
-      imageName: liavgoldadev.jfrogdev.org/prod-repo/golda
+      sourceRepository: base-images               
+      imageName: liavgoldadev.jfrogdev.org/base-images/base_image
       imageTag: ${run_number}
       autoPull: true
 
